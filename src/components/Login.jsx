@@ -4,6 +4,25 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column; /* Dikey hizalama */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+`;
+const TextLogin = styled.h1`
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+`;
+const Welcome = styled.p`
+text-align: center;
+font-size: 1rem;
+color: white;
+`;
 const StyledForm = styled(Form)`
   background-color:rgb(243, 236, 236);
   padding: 20px;
@@ -81,31 +100,26 @@ export default function Login() {
   const handleChange = (event) => {
     let { name, value, type, checked } = event.target;
     const fieldValue = type === 'checkbox' ? checked : value;
-    setForm({ ...form, [name]: fieldValue });
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: fieldValue,
+    }));
   
-    if (name === "email") {
-      setErrors((prev) => ({
-        ...prev,
-        email: !validateEmail(fieldValue), 
-      }));
-    }
-    if (name === "password") {
-      setErrors((prev) => ({
-        ...prev,
-        password: !validatePassword(fieldValue), 
-      }));
-    }
-    if (name === "terms") {
-      setErrors((prev) => ({
-        ...prev,
-        terms: !fieldValue, 
-      }));
-    }
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      email: name === "email" ? !validateEmail(fieldValue) : prevErrors.email,
+      password: name === "password" ? !validatePassword(fieldValue) : prevErrors.password,
+      terms: name === "terms" ? !fieldValue : prevErrors.terms,
+    }));
   };
 
   useEffect(() => {
-    setIsValid(!Object.values(errors).some((error) => error));
-  }, [errors]);
+    setIsValid(
+      validateEmail(form.email) &&
+        validatePassword(form.password) &&
+        form.terms
+    );
+  }, [form]);
 
   const validateForm = () => {
     setErrors({
@@ -149,7 +163,10 @@ export default function Login() {
 };
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledContainer>
+      <TextLogin>Login</TextLogin>
+      <Welcome>Welcome back.</Welcome>
+      <StyledForm onSubmit={handleSubmit}>
       <FormGroup>
         <Label for="exampleEmail">Email</Label>
         <StyledInput
@@ -194,5 +211,6 @@ export default function Login() {
         </StyledButton>
       </FormGroup>
     </StyledForm>
+    </StyledContainer>
   );
 }
