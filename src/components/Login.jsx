@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const StyledContainer = styled.div`
   display: flex;
-  flex-direction: column; /* Dikey hizalama */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -16,20 +16,20 @@ const TextLogin = styled.h1`
   margin-bottom: 25px;
   text-align: center;
   font-size: 2rem;
-  color: white;
+  color: #2C3E50;
 `;
 const Welcome = styled.p`
 text-align: center;
 font-size: 1rem;
-color: white;
+color: #2C3E50;
 `;
 const StyledForm = styled(Form)`
-  background-color:rgb(243, 236, 236);
+  background-color: #C0C9DB;
+  color: #2C3E50;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
   max-width: 400px;
-  margin: 50px auto;
   transition: opacity 0.3s ease; 
   &:hover {
     opacity: 1; 
@@ -37,17 +37,19 @@ const StyledForm = styled(Form)`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #007bff;
+  background-color: #3A4A5E;
+  color: white;
   border: none;
   font-size: 16px;
   &:hover {
-    background-color: #0056b3;
+    background-color: #4D5A6B;
+    color: white;
   }
 `;
 
 const StyledInput = styled(Input)`
   &:focus {
-    border-color: #007bff;
+    border: 1px solid #657279;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   }
 `;
@@ -95,8 +97,6 @@ export default function Login() {
     );
   };
 
-
-  
   const handleChange = (event) => {
     let { name, value, type, checked } = event.target;
     const fieldValue = type === 'checkbox' ? checked : value;
@@ -193,7 +193,7 @@ export default function Login() {
           <ErrorText className="text-danger">{errorMessages.password}</ErrorText>)}
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="terms" check>
+        <Label htmlFor="terms" check className="checkbox-label">
           <input
             name="terms"
             id="terms"
@@ -206,7 +206,7 @@ export default function Login() {
         {errors.terms && <ErrorText className="text-danger">{errorMessages.terms}</ErrorText>}
       </FormGroup>
       <FormGroup className="text-center p-4">
-        <StyledButton disabled={!isValid} color="primary">
+        <StyledButton disabled={!isValid}>
           Sign In
         </StyledButton>
       </FormGroup>
