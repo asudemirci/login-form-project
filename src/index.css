@@ -1,20 +1,17 @@
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica,
-    Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 }
 
 body {
   margin: 0;
-  background-image: linear-gradient(#edf2ff, #344766);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
 }
-
-.checkbox-label {
+.form-check-label {
   display: flex;
   align-items: center;
 }
-
-.checkbox-label input[type='checkbox'] {
+.form-check-label input[type="checkbox"] {
   margin-right: 5px;
 }

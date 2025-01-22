@@ -1,7 +1,7 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
-import Success from './components/Success';
+import Success from './components/Success.jsx';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
@@ -16,6 +16,6 @@ export default function App() {
     </Route>
   </Switch>
   </div>
-  )
+  );
  }
   

@@ -5,12 +5,17 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const StyledContainer = styled.div`
+<<<<<<< HEAD
   display: flex;
+=======
+ display: flex;
+>>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   color: white;
+<<<<<<< HEAD
 `;
 const TextLogin = styled.h1`
   margin-bottom: 25px;
@@ -25,6 +30,23 @@ color: #2C3E50;
 `;
 const StyledForm = styled(Form)`
   background-color: #C0C9DB;
+=======
+  background-image: linear-gradient(#edf2ff, #d2d2d2)
+`
+const TextLogin = styled.h1`
+margin-bottom: 25px;
+text-align: center;
+font-size: 2rem;
+color: #2C3E50;
+`
+const Welcome = styled.h2`
+text-align: center;
+font-size: 1rem;
+color: #2C3E50;
+`
+const StyledForm = styled(Form)`
+  background-color: #e7eaee;
+>>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
   color: #2C3E50;
   padding: 20px;
   border-radius: 8px;
@@ -61,12 +83,11 @@ const ErrorText = styled.p`
 const initialForm = {
   email: '',
   password: '',
-  terms: false,
+  rememberMe: false,
 };
 const errorMessages = {
   email: "Please enter a valid email address",
   password: "Password must be at least 8 characters",
-  terms: "You must accept the terms",
 };
 
 export default function Login() {
@@ -74,7 +95,6 @@ export default function Login() {
   const [ errors, setErrors ] = useState({
     email: false,
     password: false,
-    terms: false,
   });
   const [isValid, setIsValid ] = useState(false);
   
@@ -107,29 +127,44 @@ export default function Login() {
   
     setErrors((prevErrors) => ({
       ...prevErrors,
+<<<<<<< HEAD
       email: name === "email" ? !validateEmail(fieldValue) : prevErrors.email,
       password: name === "password" ? !validatePassword(fieldValue) : prevErrors.password,
       terms: name === "terms" ? !fieldValue : prevErrors.terms,
+=======
+      email: name === 'email' ? !validateEmail(fieldValue) : prevErrors.email,
+      password:
+        name === 'password'
+          ? !validatePassword(fieldValue)
+          : prevErrors.password,
+>>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
     }));
   };
 
   useEffect(() => {
+<<<<<<< HEAD
     setIsValid(
       validateEmail(form.email) &&
         validatePassword(form.password) &&
         form.terms
     );
   }, [form]);
+=======
+    setIsValid(validateEmail(form.email) && validatePassword(form.password));
+  }, [form.email, form.password]);
+>>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
 
   const validateForm = () => {
-    setErrors({
+    const newErrors = {
       email: !validateEmail(form.email),
       password: !validatePassword(form.password),
-      terms: !form.terms,
-    });
+    };
 
-    return !Object.values(errors).some((error) => error);
+    setErrors(newErrors);
+
+    return !Object.values(newErrors).some((error) => error);
   };
+
 
 
   
@@ -151,7 +186,7 @@ export default function Login() {
       );
       if (user) {
         setForm(initialForm);
-        history.push("/main");
+        history.push("/success");
       } else {
         history.push("/error");
       }
@@ -164,9 +199,15 @@ export default function Login() {
 
   return (
     <StyledContainer>
+<<<<<<< HEAD
       <TextLogin>Login</TextLogin>
       <Welcome>Welcome back.</Welcome>
       <StyledForm onSubmit={handleSubmit}>
+=======
+    <TextLogin>Sign In</TextLogin>
+    <Welcome>Welcome back.</Welcome>
+    <StyledForm as="form" onSubmit={handleSubmit}>
+>>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
       <FormGroup>
         <Label for="exampleEmail">Email</Label>
         <StyledInput
@@ -193,17 +234,20 @@ export default function Login() {
           <ErrorText className="text-danger">{errorMessages.password}</ErrorText>)}
       </FormGroup>
       <FormGroup>
+<<<<<<< HEAD
         <Label htmlFor="terms" check className="checkbox-label">
+=======
+        <Label htmlFor="rememberMe" check className="checkbox-label">
+>>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
           <input
-            name="terms"
-            id="terms"
+            name="rememberMe"
+            id="rememberMe"
             type="checkbox"
-            checked={form.terms}
+            checked={form.rememberMe}
             onChange={handleChange}
           />
-          I agree to terms of service and privacy policy
+          Remember me
         </Label>
-        {errors.terms && <ErrorText className="text-danger">{errorMessages.terms}</ErrorText>}
       </FormGroup>
       <FormGroup className="text-center p-4">
         <StyledButton disabled={!isValid}>

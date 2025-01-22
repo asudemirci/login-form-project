@@ -1,0 +1,93 @@
+
+div.container {
+  margin: 0 auto; 
+  max-width: 100%; 
+  width: 100%;
+  padding: 2.4rem;
+}
+.container-fluid {
+  margin: 0 auto; 
+  max-width: 100%; 
+  width: 100%;
+  padding: 2.4rem;
+}
+
+.navbar .navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  letter-spacing: 1.5px;
+  width: auto;
+  font-size: 2em;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center; 
+  flex-grow: 1; 
+  flex-shrink: 1;
+}
+.categories-wrapper {
+  flex-grow: 1;
+  max-width: 50%;
+  display: flex;
+  overflow-x: hidden;
+  gap: 10px;
+  position: relative;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+}
+
+.category-item {
+  cursor: pointer;
+  padding: 5px 10px;
+  opacity: 1;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+  transform: scale(1);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; 
+}
+
+.category-item.hide {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none; 
+}
+.category-item.active {
+  font-weight: bold; 
+  background-color: transparent; 
+  border-bottom: 1px solid #2e4b69; 
+}
+
+.scroll-controls {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+}
+
+.scroll-button-left,
+.scroll-button-right {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none; 
+  color: #333;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease-in-out;
+  z-index: 101;
+  border-radius: 50%; 
+}
+
+.scroll-button-left {
+  left: 0;
+  margin-right: 5px;
+  box-shadow: 15px 1px 10px #ffffff;
+}
+
+.scroll-button-right {
+  right: 0;
+  margin-left: 5px;
+  box-shadow: -17px -2px 10px #ffffff;
+}
+
