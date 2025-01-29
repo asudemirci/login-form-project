@@ -8,14 +8,17 @@ describe("Login Page Test", () => {
     cy.get("[data-cy=input-password]").type("9fxIH0GXesEwH_I");
     cy.get("[data-cy=remember-me]").check();
     cy.get("[data-cy=submit-button]").click();
-    cy.url().should("include", "/main"); 
+    cy.url().should("include", "/success"); 
   });
 
   it("Should not log in with incorrect credentials", () => {
+    cy.visit("/");
     cy.get("[data-cy=input-email]").type("wrong@example.com");
     cy.get("[data-cy=input-password]").type("wrongpass");
     cy.get("[data-cy=submit-button]").click();
-    cy.url().should("include", "/error");
+  
+    cy.url().should("not.include", "/success");
+    cy.url().should("include", "/error"); 
   });
 
   it("Should not log in with empty fields", () => {
