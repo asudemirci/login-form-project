@@ -5,32 +5,12 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const StyledContainer = styled.div`
-<<<<<<< HEAD
   display: flex;
-=======
- display: flex;
->>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   color: white;
-<<<<<<< HEAD
-`;
-const TextLogin = styled.h1`
-  margin-bottom: 25px;
-  text-align: center;
-  font-size: 2rem;
-  color: #2C3E50;
-`;
-const Welcome = styled.p`
-text-align: center;
-font-size: 1rem;
-color: #2C3E50;
-`;
-const StyledForm = styled(Form)`
-  background-color: #C0C9DB;
-=======
   background-image: linear-gradient(#edf2ff, #d2d2d2)
 `
 const TextLogin = styled.h1`
@@ -127,32 +107,17 @@ export default function Login() {
   
     setErrors((prevErrors) => ({
       ...prevErrors,
-<<<<<<< HEAD
-      email: name === "email" ? !validateEmail(fieldValue) : prevErrors.email,
-      password: name === "password" ? !validatePassword(fieldValue) : prevErrors.password,
-      terms: name === "terms" ? !fieldValue : prevErrors.terms,
-=======
       email: name === 'email' ? !validateEmail(fieldValue) : prevErrors.email,
       password:
         name === 'password'
           ? !validatePassword(fieldValue)
           : prevErrors.password,
->>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
     }));
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-    setIsValid(
-      validateEmail(form.email) &&
-        validatePassword(form.password) &&
-        form.terms
-    );
-  }, [form]);
-=======
     setIsValid(validateEmail(form.email) && validatePassword(form.password));
   }, [form.email, form.password]);
->>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
 
   const validateForm = () => {
     const newErrors = {
@@ -164,10 +129,6 @@ export default function Login() {
 
     return !Object.values(newErrors).some((error) => error);
   };
-
-
-
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -199,15 +160,9 @@ export default function Login() {
 
   return (
     <StyledContainer>
-<<<<<<< HEAD
-      <TextLogin>Login</TextLogin>
-      <Welcome>Welcome back.</Welcome>
-      <StyledForm onSubmit={handleSubmit}>
-=======
     <TextLogin>Sign In</TextLogin>
     <Welcome>Welcome back.</Welcome>
     <StyledForm as="form" onSubmit={handleSubmit}>
->>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
       <FormGroup>
         <Label for="exampleEmail">Email</Label>
         <StyledInput
@@ -234,11 +189,7 @@ export default function Login() {
           <ErrorText className="text-danger">{errorMessages.password}</ErrorText>)}
       </FormGroup>
       <FormGroup>
-<<<<<<< HEAD
-        <Label htmlFor="terms" check className="checkbox-label">
-=======
         <Label htmlFor="rememberMe" check className="checkbox-label">
->>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
           <input
             name="rememberMe"
             id="rememberMe"
