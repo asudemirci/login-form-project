@@ -172,6 +172,7 @@ export default function Login() {
           type="email"
           onChange={handleChange}
           value={form.email}
+          data-cy="input-email"
         />
          {errors.email && <ErrorText className="text-danger">{errorMessages.email}</ErrorText>}
       </FormGroup>
@@ -184,6 +185,7 @@ export default function Login() {
           type="password"
           onChange={handleChange}
           value={form.password}
+          data-cy="input-password"
         />
         {errors.password && (
           <ErrorText className="text-danger">{errorMessages.password}</ErrorText>)}
@@ -196,12 +198,13 @@ export default function Login() {
             type="checkbox"
             checked={form.rememberMe}
             onChange={handleChange}
+            data-cy="remember-me"
           />
           Remember me
         </Label>
       </FormGroup>
       <FormGroup className="text-center p-4">
-        <StyledButton disabled={!isValid}>
+        <StyledButton data-cy="submit-button" disabled={!isValid}>
           Sign In
         </StyledButton>
       </FormGroup>
