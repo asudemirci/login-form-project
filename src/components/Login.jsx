@@ -26,7 +26,6 @@ color: #2C3E50;
 `
 const StyledForm = styled(Form)`
   background-color: #e7eaee;
->>>>>>> afe3ecf (Added NavBar component and made changes in Success component.)
   color: #2C3E50;
   padding: 20px;
   border-radius: 8px;
