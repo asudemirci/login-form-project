@@ -65,9 +65,9 @@ const initialForm = {
   password: '',
   rememberMe: false,
 };
-const errorMessages = {
+export const errorMessages = {
   email: "Please enter a valid email address",
-  password: "Password must be at least 8 characters",
+  password: "Password must be at least 8 characters, include 1 uppercase letter and 1 number",
 };
 
 export default function Login() {
@@ -174,7 +174,7 @@ export default function Login() {
           value={form.email}
           data-cy="input-email"
         />
-         {errors.email && <ErrorText className="text-danger">{errorMessages.email}</ErrorText>}
+         {errors.email && <ErrorText data-cy="email-error" className="text-danger">{errorMessages.email}</ErrorText>}
       </FormGroup>
       <FormGroup>
         <Label for="examplePassword">Password</Label>
@@ -188,7 +188,7 @@ export default function Login() {
           data-cy="input-password"
         />
         {errors.password && (
-          <ErrorText className="text-danger">{errorMessages.password}</ErrorText>)}
+          <ErrorText data-cy="password-error" className="text-danger">{errorMessages.password}</ErrorText>)}
       </FormGroup>
       <FormGroup>
         <Label htmlFor="rememberMe" check className="checkbox-label">
@@ -204,7 +204,7 @@ export default function Login() {
         </Label>
       </FormGroup>
       <FormGroup className="text-center p-4">
-        <StyledButton data-cy="submit-button" disabled={!isValid}>
+        <StyledButton data-cy="submit-button" disabled={!(validateEmail(form.email) && validatePassword(form.password))}>
           Sign In
         </StyledButton>
       </FormGroup>
